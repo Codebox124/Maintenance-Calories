@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Calories Calculator</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Additional styling */
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-200 p-4">
+
+    <div class="max-w-md mx-auto bg-white rounded p-6 shadow-md">
+        <h2 class="text-2xl font-bold mb-2">Maintenance Calories</h2>
+        <p class="text-sm mb-4">How many calories your body burns in total in a day, taking into account your
+            physical activity .
+        </p>
+        <label class="text-lg mb-2 block">Basal Metabolic Rate ( BMR ) *</label>
+        <div class="mb-4">
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="bmr" type="number" placeholder="Basal Metabolic Rate (BMR)">
+        </div>
+        <label class="text-lg mb-2">Physical activity level *</label>
+        <div class="mb-4">
+            <select
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="activityLevel">
+                <option value="">Select your level of physical activity</option>
+                <option value="1">1 Little or no exercise</option>
+                <option value="2">2 Light exercise (1-3 days a week)</option>
+                <option value="3">3 Moderate exercise (3-5 days a week)</option>
+                <option value="4">4 Strong exercise (6-7 days a week)</option>
+                <option value="5">5 Very strong exercise (twice a day, very hard workouts)</option>
+            </select>
+        </div>
+        <button
+            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            onclick="calculateMaintenanceCalories()">Calculate</button>
+        <button
+            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-2"
+            onclick="resetFields()">Reset</button>
+        <div class="mt-4 " id="resultSection">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="maintenanceCalories">Maintenance
+                Calories:</label>
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="maintenanceCalories" type="text" readonly>
+        </div>
+    </div>
+
+    <script>
+        function calculateMaintenanceCalories() {
+            const bmr = parseFloat(document.getElementById('bmr').value);
+
+            const activityLevel = parseFloat(document.getElementById('activityLevel').value);
+
+            let maintenanceCalories = 0;
+
+            switch (activityLevel) {
+                case 1:
+                    maintenanceCalories = bmr * 1.2; // Little or no exercise
+                    break;
+                case 2:
+                    maintenanceCalories = bmr * 1.375; // Light exercise (1-3 days a week)
+                    break;
+                case 3:
+                    maintenanceCalories = bmr * 1.55; // Moderate exercise (3-5 days a week)
+                    break;
+                case 4:
+                    maintenanceCalories = bmr * 1.725; // Strong exercise (6-7 days a week)
+                    break;
+                case 5:
+                    maintenanceCalories = bmr * 1.9; // Very strong exercise (twice a day, very hard workouts)
+                    break;
+                default:
+                    break;
+            }
+
+            document.getElementById('maintenanceCalories').value = maintenanceCalories;
+            document.getElementById('resultSection').classList.remove('hidden');
+        }
+
+        function resetFields() {
+            document.getElementById('bmr').value = '';
+
+            document.getElementById('activityLevel').value = '1';
+            document.getElementById('maintenanceCalories').value = '';
+            document.getElementById('resultSection').classList.add('');
+        }
+    </script>
+
+</body>
+
+</html>
