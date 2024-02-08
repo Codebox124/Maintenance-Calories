@@ -46,17 +46,16 @@
                 <option value="5">5 - Ejercicio muy intenso (dos veces al día)</option>
             </select>
         </div>
-        <div class="flex justify-between">
+        <div class="flex ">
             <button
                 class="button-color text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                onclick="calculateMaintenanceCalories()">Calculate</button>
+                onclick="calculateMaintenanceCalories()">Calcular</button>
             <button
                 class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-2"
-                onclick="resetFields()">Reset</button>
+                onclick="resetFields()">Resetear</button>
         </div>
         <div class="my-4 " id="resultSection">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="maintenanceCalories">Maintenance
-                Calories:</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="maintenanceCalories">Tus Calorías de Mantenimiento</label>
             <input
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="maintenanceCalories" type="text" readonly>
